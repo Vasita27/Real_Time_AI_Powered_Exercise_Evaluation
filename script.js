@@ -1,4 +1,3 @@
-
 import { PoseLandmarker, FilesetResolver, DrawingUtils } from "https://cdn.skypack.dev/@mediapipe/tasks-vision@0.10.0";
 
 const demosSection = document.getElementById("demos");
@@ -16,12 +15,9 @@ let currentExercise = null;
 let repCount = 0;
 let exerciseState = "waiting"; // waiting, down, up
 let lastExerciseState = "waiting";
-let lastFeedbackTime = 0;
 let feedbackTimer = null;
-let lastFeedbackText = '';
 
-
-// Three.js variables
+// Threshold angles for squat and pushup
 let scene, camera, renderer;
 let annotations = [];
 const SQUAT_KNEE_ANGLE_MIN = 90;  // halfway down
@@ -132,8 +128,6 @@ function average(a, b) {
   return (a + b) / 2;
 }
 
-
-
 // Exercise detection logic
 function detectExercise(landmarks) {
   if (!currentExercise || !landmarks || landmarks.length === 0) return;
@@ -230,11 +224,6 @@ function detectExercise(landmarks) {
       showInPlaceFeedback("Push knees out", RED, landmark[25]); // Left knee
     }
     
-    // if (chestDropping) {
-    //   showInPlaceFeedback("Keep chest up", RED, landmark[12]); // Right shoulder
-    // }
-    
-
     // Rep counting and perfect form
     if (backAngle >= SQUAT_BACK_ANGLE_MIN &&
         kneeAngle >= SQUAT_KNEE_ANGLE_MIN &&
@@ -342,6 +331,8 @@ function detectExercise(landmarks) {
   renderer.render(scene, camera);
   return color;
 }
+
+//function to render realtime feedback
 function showInPlaceFeedback(text, color = RED, position = {x: 0.5, y: 0.5}) {
   clearAnnotations();
   const sprite = createTextSprite(text, color);
@@ -374,10 +365,7 @@ const createPoseLandmarker = async () => {
 
 createPoseLandmarker();
 
-// Initialize Three.js
-
-
-// Setup exercise buttons
+// Setup exercise buttons with event listeners
 squatsButton.addEventListener('click', () => {
   currentExercise = 'squats';
   repCount = 0;
@@ -477,6 +465,7 @@ function enableCam(event) {
 
 let lastVideoTime = -1;
 
+//Function that runs over and over again and keeps checking for landmarks, to make drawings on them.
 async function predictWebcam() {
   if (runningMode === "IMAGE") {
     runningMode = "VIDEO";
@@ -547,6 +536,7 @@ uploadPushup.addEventListener('change', (event) => {
   handleImage(file, "pushup");
 });
 
+//Function to handle the image uploaded
 async function handleImage(file, type) {
   const img = new Image();
   img.src = URL.createObjectURL(file);
@@ -558,7 +548,7 @@ async function handleImage(file, type) {
     canvasCtx.drawImage(img, 0, 0);
 
     if (runningMode === "VIDEO") {
-      runningMode = "IMAGE";
+      runningMode = "IMAGE"; //Image because we are dealing with images - one frame at a time
       await poseLandmarker.setOptions({ runningMode: "IMAGE" });
     }
 
@@ -579,6 +569,8 @@ async function handleImage(file, type) {
     }
   };
 }
+
+//Function to evaluate the detected posture
 function evaluatePose(landmarks,type) {
   const leftKnee = landmarks[25];
   const rightKnee = landmarks[26];

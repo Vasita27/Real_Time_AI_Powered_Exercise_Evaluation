@@ -119,6 +119,19 @@ This project is made by referring the official documentation of media pipe which
 
 ---
 
+## 🛠️ How to Run Locally
+
+To run this project on your local machine:
+
+1. Make sure Python3 is installed on your system.
+2. Open a terminal and navigate to the project directory.
+3. Run the following command to start a local server:
+
+   ```bash
+   python3 -m http.server 8000
+
+ 4. Open http://localhost:8000 to test the web app.
+
 ## 📝 License
 
 This project is licensed under the [MIT License](LICENSE).

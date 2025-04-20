@@ -45,7 +45,7 @@ A real-time browser-based fitness application that uses **MediaPipe Pose Landmar
 #### Push-Ups:
 - Checks for:
   - Elbow angle
-  - Sagging or arching of the back
+  - Back Angle
 - Compares them with the defined thresholds to determines the correctness of the squat
 - Increments the rep counter if a complete pushup is done
 

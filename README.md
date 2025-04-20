@@ -13,7 +13,8 @@ A real-time browser-based fitness application that uses **MediaPipe Pose Landmar
 ## 🚀 Live Demo
 
 👉 [Live App Link](https://vasita27.github.io/Real_Time_AI_Powered_Exercise_Evaluation/)  
-📹 [Demo Video Link](https://your-demo-video-link.com)  
+📹 [Demo Video Link](https://www.youtube.com/watch?v=k9MmNxhQE8M)  
+👩‍💻 [Code Explanation Video Link](https://www.youtube.com/watch?v=kUrHaeFiYhc) 
 
 ---
 
@@ -79,7 +80,7 @@ A real-time browser-based fitness application that uses **MediaPipe Pose Landmar
 
 ---
 
-## 📄 License & Attribution
+## 📄Attribution
 
 This project is made by referring the official documentation of media pipe which may include the example code snippets.
 

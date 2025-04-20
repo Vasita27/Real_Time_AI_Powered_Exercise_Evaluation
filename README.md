@@ -10,6 +10,19 @@ A real-time browser-based fitness application that uses **MediaPipe Pose Landmar
 
 ---
 
+## 📂 Project Structure
+
+```
+Root Folder
+├─ index.html (Components that render on web)
+├─ styles.css (Adds styles to the website)
+├─ script.js  (Clean and structured code with functions and comments - Adds functionality to the web app)
+├─ README.md  (Instructions about setup and information about the webapp)
+├─ LICENSE
+
+```
+---
+
 ## 🚀 Live Demo
 
 👉 [Live App Link](https://vasita27.github.io/Real_Time_AI_Powered_Exercise_Evaluation/)  
